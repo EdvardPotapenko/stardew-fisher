@@ -1,0 +1,5 @@
+$tf/
+packages/
+bin/
+obj/
+.vs
