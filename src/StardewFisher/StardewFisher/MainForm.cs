@@ -1,7 +1,10 @@
+using MaterialSkin;
+using MaterialSkin.Controls;
 using StardewFisher.DTO;
 using StardewFisher.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -10,7 +13,7 @@ using System.Windows.Forms;
 
 namespace StardewFisher
 {
-    public partial class MainForm : Form
+    public partial class MainForm : MaterialForm
     {
 
         private SaveDataDTO _saveData = new SaveDataDTO();
@@ -29,6 +32,10 @@ namespace StardewFisher
         {
             InitializeComponent();
 
+            ConfigureMaterialForm();
+
+            pic_icon.BackColor = Color.Transparent;
+
             hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
 
             // register default hotkey
@@ -43,6 +50,14 @@ namespace StardewFisher
                 MessageBox.Show("Something went wrong, try deleting SavedHotkeys.json file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(Environment.ExitCode);
             }
+        }
+
+        private void ConfigureMaterialForm()
+        {
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Pink800, Primary.Pink900, Primary.Pink500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         /// <summary>
@@ -131,7 +146,7 @@ namespace StardewFisher
                     return;
                 }
                 _saveData.ModifierKeys = new List<ModifierKeys>();
-                MessageBox.Show("Only 3 modifier keys allowed (shift, ctrl, alt)");
+                MessageBox.Show("Only 3 modifier keys allowed (shift, ctrl, alt)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_hotkey.Text = "";
                 return;
             }
@@ -148,7 +163,7 @@ namespace StardewFisher
                     return;
                 }
                 _saveData.ModifierKeys = new List<ModifierKeys>();
-                MessageBox.Show("Only 3 modifier keys allowed (shift, ctrl, alt)");
+                MessageBox.Show("Only 3 modifier keys allowed (shift, ctrl, alt)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_hotkey.Text = "";
                 return;
             }
@@ -165,7 +180,7 @@ namespace StardewFisher
                     return;
                 }
                 _saveData.ModifierKeys = new List<ModifierKeys>();
-                MessageBox.Show("Only 3 modifier keys allowed (shift, ctrl, alt)");
+                MessageBox.Show("Only 3 modifier keys allowed (shift, ctrl, alt)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_hotkey.Text = "";
                 return;
             }
@@ -186,7 +201,7 @@ namespace StardewFisher
                     txt_hotkey.Text = "";
                     _saveData.ModifierKeys = new List<ModifierKeys>();
                     _saveData.Key = default;
-                    MessageBox.Show("Same hotkey already saved bro");
+                    MessageBox.Show("Same hotkey already saved bro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 catch (InvalidOperationException)
@@ -194,7 +209,7 @@ namespace StardewFisher
                     txt_hotkey.Text = "";
                     _saveData.ModifierKeys = new List<ModifierKeys>();
                     _saveData.Key = default;
-                    MessageBox.Show("Same hotkey already saved bro");
+                    MessageBox.Show("Same hotkey already saved bro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -206,7 +221,7 @@ namespace StardewFisher
                 return;
             }
 
-            MessageBox.Show("You must use at least one modifier key (ctrl, shift or alt)");
+            MessageBox.Show("You must use at least one modifier key (ctrl, shift or alt)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             txt_hotkey.Text = "";
             _saveData.ModifierKeys = new List<ModifierKeys>();
             _saveData.Key = default;

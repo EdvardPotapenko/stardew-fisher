@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace StardewFisher
 {
@@ -32,44 +33,22 @@ namespace StardewFisher
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.lbl_help = new System.Windows.Forms.Label();
-            this.txt_throw_time = new System.Windows.Forms.Label();
             this.notify_icon = new System.Windows.Forms.NotifyIcon(this.components);
             this.ctx_strip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbl_author = new System.Windows.Forms.Label();
             this.txt_hotkey = new System.Windows.Forms.TextBox();
-            this.lbl_default = new System.Windows.Forms.Label();
             this.input_time_throw = new System.Windows.Forms.NumericUpDown();
-            this.lbl_help_1 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbl_help_3 = new System.Windows.Forms.Label();
+            this.lbl_throw_time = new MaterialSkin.Controls.MaterialLabel();
+            this.lbl_custom_hotkey = new MaterialSkin.Controls.MaterialLabel();
+            this.card_throw_time = new MaterialSkin.Controls.MaterialCard();
+            this.card_hotkeys = new MaterialSkin.Controls.MaterialCard();
+            this.pic_icon = new System.Windows.Forms.PictureBox();
             this.ctx_strip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.input_time_throw)).BeginInit();
+            this.card_throw_time.SuspendLayout();
+            this.card_hotkeys.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_icon)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lbl_help
-            // 
-            this.lbl_help.AutoSize = true;
-            this.lbl_help.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.lbl_help.ForeColor = System.Drawing.Color.White;
-            this.lbl_help.Location = new System.Drawing.Point(8, 41);
-            this.lbl_help.Name = "lbl_help";
-            this.lbl_help.Size = new System.Drawing.Size(221, 23);
-            this.lbl_help.TabIndex = 1;
-            this.lbl_help.Text = "To set your custom hotkeys:";
-            // 
-            // txt_throw_time
-            // 
-            this.txt_throw_time.AutoSize = true;
-            this.txt_throw_time.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.txt_throw_time.ForeColor = System.Drawing.Color.White;
-            this.txt_throw_time.Location = new System.Drawing.Point(8, 13);
-            this.txt_throw_time.Name = "txt_throw_time";
-            this.txt_throw_time.Size = new System.Drawing.Size(395, 23);
-            this.txt_throw_time.TabIndex = 3;
-            this.txt_throw_time.Text = "Throw time in millis (default 1000, range 100-2000)";
             // 
             // notify_icon
             // 
@@ -96,40 +75,18 @@ namespace StardewFisher
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // lbl_author
-            // 
-            this.lbl_author.AutoSize = true;
-            this.lbl_author.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_author.ForeColor = System.Drawing.Color.White;
-            this.lbl_author.Location = new System.Drawing.Point(460, 154);
-            this.lbl_author.Name = "lbl_author";
-            this.lbl_author.Size = new System.Drawing.Size(89, 17);
-            this.lbl_author.TabIndex = 5;
-            this.lbl_author.Text = "by h0pele$0ul";
-            // 
             // txt_hotkey
             // 
-            this.txt_hotkey.Location = new System.Drawing.Point(375, 66);
+            this.txt_hotkey.Location = new System.Drawing.Point(20, 45);
             this.txt_hotkey.Name = "txt_hotkey";
             this.txt_hotkey.ReadOnly = true;
             this.txt_hotkey.Size = new System.Drawing.Size(174, 22);
             this.txt_hotkey.TabIndex = 7;
             this.txt_hotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_hotkey_keydown);
             // 
-            // lbl_default
-            // 
-            this.lbl_default.AutoSize = true;
-            this.lbl_default.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_default.ForeColor = System.Drawing.Color.White;
-            this.lbl_default.Location = new System.Drawing.Point(372, 92);
-            this.lbl_default.Name = "lbl_default";
-            this.lbl_default.Size = new System.Drawing.Size(183, 17);
-            this.lbl_default.TabIndex = 8;
-            this.lbl_default.Text = "Default hotkey is Ctrl + Alt + F";
-            // 
             // input_time_throw
             // 
-            this.input_time_throw.Location = new System.Drawing.Point(409, 16);
+            this.input_time_throw.Location = new System.Drawing.Point(20, 36);
             this.input_time_throw.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -150,95 +107,117 @@ namespace StardewFisher
             0});
             this.input_time_throw.ValueChanged += new System.EventHandler(this.input_time_throw_ValueChanged);
             // 
-            // lbl_help_1
+            // lbl_throw_time
             // 
-            this.lbl_help_1.AutoSize = true;
-            this.lbl_help_1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.lbl_help_1.ForeColor = System.Drawing.Color.White;
-            this.lbl_help_1.Location = new System.Drawing.Point(8, 64);
-            this.lbl_help_1.Name = "lbl_help_1";
-            this.lbl_help_1.Size = new System.Drawing.Size(185, 23);
-            this.lbl_help_1.TabIndex = 10;
-            this.lbl_help_1.Text = "1. Select input text box";
+            this.lbl_throw_time.AutoSize = true;
+            this.lbl_throw_time.Depth = 0;
+            this.lbl_throw_time.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lbl_throw_time.Location = new System.Drawing.Point(17, 14);
+            this.lbl_throw_time.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lbl_throw_time.Name = "lbl_throw_time";
+            this.lbl_throw_time.Size = new System.Drawing.Size(489, 19);
+            this.lbl_throw_time.TabIndex = 10;
+            this.lbl_throw_time.Text = "To choose custom throw time use input below (default is 1000 millis)";
             // 
-            // label1
+            // lbl_custom_hotkey
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(8, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(337, 23);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "2. Press (ctrl or alt or shift) keys one by one";
+            this.lbl_custom_hotkey.AutoSize = true;
+            this.lbl_custom_hotkey.Depth = 0;
+            this.lbl_custom_hotkey.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lbl_custom_hotkey.Location = new System.Drawing.Point(17, 14);
+            this.lbl_custom_hotkey.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lbl_custom_hotkey.Name = "lbl_custom_hotkey";
+            this.lbl_custom_hotkey.Size = new System.Drawing.Size(651, 19);
+            this.lbl_custom_hotkey.TabIndex = 11;
+            this.lbl_custom_hotkey.Text = "To choose custom hotkey select input box and press keys one by one (first ctrl or" +
+    " alt or shift)";
             // 
-            // label2
+            // card_throw_time
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(8, 110);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(343, 23);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "3. Press non modifier key to set your hotkey";
+            this.card_throw_time.AutoSize = true;
+            this.card_throw_time.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.card_throw_time.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.card_throw_time.Controls.Add(this.lbl_throw_time);
+            this.card_throw_time.Controls.Add(this.input_time_throw);
+            this.card_throw_time.Depth = 0;
+            this.card_throw_time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.card_throw_time.Location = new System.Drawing.Point(17, 78);
+            this.card_throw_time.Margin = new System.Windows.Forms.Padding(14);
+            this.card_throw_time.MouseState = MaterialSkin.MouseState.HOVER;
+            this.card_throw_time.Name = "card_throw_time";
+            this.card_throw_time.Padding = new System.Windows.Forms.Padding(14);
+            this.card_throw_time.Size = new System.Drawing.Size(523, 75);
+            this.card_throw_time.TabIndex = 12;
             // 
-            // lbl_help_3
+            // card_hotkeys
             // 
-            this.lbl_help_3.AutoSize = true;
-            this.lbl_help_3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.lbl_help_3.ForeColor = System.Drawing.Color.White;
-            this.lbl_help_3.Location = new System.Drawing.Point(8, 133);
-            this.lbl_help_3.Name = "lbl_help_3";
-            this.lbl_help_3.Size = new System.Drawing.Size(271, 23);
-            this.lbl_help_3.TabIndex = 13;
-            this.lbl_help_3.Text = "Example: Press Ctrl then Alt then t";
+            this.card_hotkeys.AutoSize = true;
+            this.card_hotkeys.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.card_hotkeys.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.card_hotkeys.Controls.Add(this.lbl_custom_hotkey);
+            this.card_hotkeys.Controls.Add(this.txt_hotkey);
+            this.card_hotkeys.Depth = 0;
+            this.card_hotkeys.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.card_hotkeys.Location = new System.Drawing.Point(17, 166);
+            this.card_hotkeys.Margin = new System.Windows.Forms.Padding(14);
+            this.card_hotkeys.MouseState = MaterialSkin.MouseState.HOVER;
+            this.card_hotkeys.Name = "card_hotkeys";
+            this.card_hotkeys.Padding = new System.Windows.Forms.Padding(14);
+            this.card_hotkeys.Size = new System.Drawing.Size(685, 84);
+            this.card_hotkeys.TabIndex = 13;
+            // 
+            // pic_icon
+            // 
+            this.pic_icon.BackColor = System.Drawing.Color.Transparent;
+            this.pic_icon.Image = ((System.Drawing.Image)(resources.GetObject("pic_icon.Image")));
+            this.pic_icon.Location = new System.Drawing.Point(287, 30);
+            this.pic_icon.Name = "pic_icon";
+            this.pic_icon.Size = new System.Drawing.Size(30, 30);
+            this.pic_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_icon.TabIndex = 14;
+            this.pic_icon.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PaleVioletRed;
-            this.ClientSize = new System.Drawing.Size(582, 193);
-            this.Controls.Add(this.lbl_help_3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbl_help_1);
-            this.Controls.Add(this.input_time_throw);
-            this.Controls.Add(this.lbl_default);
-            this.Controls.Add(this.txt_hotkey);
-            this.Controls.Add(this.lbl_author);
-            this.Controls.Add(this.txt_throw_time);
-            this.Controls.Add(this.lbl_help);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(720, 263);
+            this.Controls.Add(this.pic_icon);
+            this.Controls.Add(this.card_hotkeys);
+            this.Controls.Add(this.card_throw_time);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = new System.Drawing.Point(50, 50);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(600, 240);
-            this.MinimumSize = new System.Drawing.Size(600, 240);
+            this.MaximumSize = new System.Drawing.Size(720, 263);
+            this.MinimumSize = new System.Drawing.Size(720, 263);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Stardew Fisher";
+            this.Text = "Stardew Fisher by h0pele$0ul";
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.ctx_strip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.input_time_throw)).EndInit();
+            this.card_throw_time.ResumeLayout(false);
+            this.card_throw_time.PerformLayout();
+            this.card_hotkeys.ResumeLayout(false);
+            this.card_hotkeys.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_icon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private Label lbl_help;
-        private Label txt_throw_time;
         private NotifyIcon notify_icon;
         private ContextMenuStrip ctx_strip;
         private ToolStripMenuItem exitToolStripMenuItem;
-        private Label lbl_author;
         private TextBox txt_hotkey;
-        private Label lbl_default;
         private NumericUpDown input_time_throw;
-        private Label lbl_help_1;
-        private Label label1;
-        private Label label2;
-        private Label lbl_help_3;
+        private MaterialSkin.Controls.MaterialLabel lbl_throw_time;
+        private MaterialSkin.Controls.MaterialLabel lbl_custom_hotkey;
+        private MaterialSkin.Controls.MaterialCard card_throw_time;
+        private MaterialSkin.Controls.MaterialCard card_hotkeys;
+        private PictureBox pic_icon;
     }
 }
