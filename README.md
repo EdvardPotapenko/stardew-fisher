@@ -3,8 +3,8 @@ Get max throw distance while fishing in stardew easily
 
 # Prerequisites
 * For versions greater than or equal to 3.0 - Windows 10 or later version are supported
-* [For versions greater than or equal to 3.0 - [.NET Core 6]](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472) 
-* [For version lower than 3.0 - .NET Framework 4.7.2](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) 
+* [For versions greater than or equal to 3.0 - .NET Core 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) 
+* [For version lower than 3.0 - .NET Framework 4.7.2](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472 ) 
 
 # Troubleshooting
 If app won't start with version lower than 3.0 - try running compitability wizard by right clicking .exe file and opening properties.
