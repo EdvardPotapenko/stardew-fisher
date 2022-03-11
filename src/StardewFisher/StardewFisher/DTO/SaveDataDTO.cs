@@ -11,7 +11,7 @@ namespace StardewFisher.DTO
     internal class SaveDataDTO
     {
         // used to comparing hotkeys when saving
-        public string Id { get; set; } // "Ctrl Alt F"
+        public string? Id { get; set; } // "Ctrl Alt F"
 
         public List<ModifierKeys> ModifierKeys { get; set; } = new List<ModifierKeys>();
         public Keys Key { get; set; } = default;

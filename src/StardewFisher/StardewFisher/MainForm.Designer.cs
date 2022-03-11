@@ -42,19 +42,17 @@ namespace StardewFisher
             this.lbl_custom_hotkey = new MaterialSkin.Controls.MaterialLabel();
             this.card_throw_time = new MaterialSkin.Controls.MaterialCard();
             this.card_hotkeys = new MaterialSkin.Controls.MaterialCard();
-            this.pic_icon = new System.Windows.Forms.PictureBox();
             this.ctx_strip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.input_time_throw)).BeginInit();
             this.card_throw_time.SuspendLayout();
             this.card_hotkeys.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_icon)).BeginInit();
             this.SuspendLayout();
             // 
             // notify_icon
             // 
             this.notify_icon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notify_icon.BalloonTipText = "I\'m here bro";
-            this.notify_icon.BalloonTipTitle = "Minimez to tray";
+            this.notify_icon.BalloonTipText = "Ima head out to tray";
+            this.notify_icon.BalloonTipTitle = "Minimized to tray";
             this.notify_icon.ContextMenuStrip = this.ctx_strip;
             this.notify_icon.Icon = ((System.Drawing.Icon)(resources.GetObject("notify_icon.Icon")));
             this.notify_icon.Text = "Stardew Clicker";
@@ -77,16 +75,18 @@ namespace StardewFisher
             // 
             // txt_hotkey
             // 
-            this.txt_hotkey.Location = new System.Drawing.Point(20, 45);
+            this.txt_hotkey.Location = new System.Drawing.Point(20, 56);
+            this.txt_hotkey.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_hotkey.Name = "txt_hotkey";
             this.txt_hotkey.ReadOnly = true;
-            this.txt_hotkey.Size = new System.Drawing.Size(174, 22);
+            this.txt_hotkey.Size = new System.Drawing.Size(174, 27);
             this.txt_hotkey.TabIndex = 7;
             this.txt_hotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_hotkey_keydown);
             // 
             // input_time_throw
             // 
-            this.input_time_throw.Location = new System.Drawing.Point(20, 36);
+            this.input_time_throw.Location = new System.Drawing.Point(20, 45);
+            this.input_time_throw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.input_time_throw.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -98,7 +98,7 @@ namespace StardewFisher
             0,
             0});
             this.input_time_throw.Name = "input_time_throw";
-            this.input_time_throw.Size = new System.Drawing.Size(140, 22);
+            this.input_time_throw.Size = new System.Drawing.Size(140, 27);
             this.input_time_throw.TabIndex = 9;
             this.input_time_throw.Value = new decimal(new int[] {
             1000,
@@ -112,7 +112,7 @@ namespace StardewFisher
             this.lbl_throw_time.AutoSize = true;
             this.lbl_throw_time.Depth = 0;
             this.lbl_throw_time.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lbl_throw_time.Location = new System.Drawing.Point(17, 14);
+            this.lbl_throw_time.Location = new System.Drawing.Point(17, 18);
             this.lbl_throw_time.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbl_throw_time.Name = "lbl_throw_time";
             this.lbl_throw_time.Size = new System.Drawing.Size(489, 19);
@@ -124,7 +124,7 @@ namespace StardewFisher
             this.lbl_custom_hotkey.AutoSize = true;
             this.lbl_custom_hotkey.Depth = 0;
             this.lbl_custom_hotkey.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lbl_custom_hotkey.Location = new System.Drawing.Point(17, 14);
+            this.lbl_custom_hotkey.Location = new System.Drawing.Point(17, 18);
             this.lbl_custom_hotkey.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbl_custom_hotkey.Name = "lbl_custom_hotkey";
             this.lbl_custom_hotkey.Size = new System.Drawing.Size(651, 19);
@@ -141,12 +141,12 @@ namespace StardewFisher
             this.card_throw_time.Controls.Add(this.input_time_throw);
             this.card_throw_time.Depth = 0;
             this.card_throw_time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.card_throw_time.Location = new System.Drawing.Point(17, 78);
-            this.card_throw_time.Margin = new System.Windows.Forms.Padding(14);
+            this.card_throw_time.Location = new System.Drawing.Point(17, 98);
+            this.card_throw_time.Margin = new System.Windows.Forms.Padding(14, 18, 14, 18);
             this.card_throw_time.MouseState = MaterialSkin.MouseState.HOVER;
             this.card_throw_time.Name = "card_throw_time";
-            this.card_throw_time.Padding = new System.Windows.Forms.Padding(14);
-            this.card_throw_time.Size = new System.Drawing.Size(523, 75);
+            this.card_throw_time.Padding = new System.Windows.Forms.Padding(14, 18, 14, 18);
+            this.card_throw_time.Size = new System.Drawing.Size(523, 94);
             this.card_throw_time.TabIndex = 12;
             // 
             // card_hotkeys
@@ -158,41 +158,30 @@ namespace StardewFisher
             this.card_hotkeys.Controls.Add(this.txt_hotkey);
             this.card_hotkeys.Depth = 0;
             this.card_hotkeys.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.card_hotkeys.Location = new System.Drawing.Point(17, 166);
-            this.card_hotkeys.Margin = new System.Windows.Forms.Padding(14);
+            this.card_hotkeys.Location = new System.Drawing.Point(17, 208);
+            this.card_hotkeys.Margin = new System.Windows.Forms.Padding(14, 18, 14, 18);
             this.card_hotkeys.MouseState = MaterialSkin.MouseState.HOVER;
             this.card_hotkeys.Name = "card_hotkeys";
-            this.card_hotkeys.Padding = new System.Windows.Forms.Padding(14);
-            this.card_hotkeys.Size = new System.Drawing.Size(685, 84);
+            this.card_hotkeys.Padding = new System.Windows.Forms.Padding(14, 18, 14, 18);
+            this.card_hotkeys.Size = new System.Drawing.Size(685, 105);
             this.card_hotkeys.TabIndex = 13;
-            // 
-            // pic_icon
-            // 
-            this.pic_icon.BackColor = System.Drawing.Color.Transparent;
-            this.pic_icon.Image = ((System.Drawing.Image)(resources.GetObject("pic_icon.Image")));
-            this.pic_icon.Location = new System.Drawing.Point(287, 30);
-            this.pic_icon.Name = "pic_icon";
-            this.pic_icon.Size = new System.Drawing.Size(30, 30);
-            this.pic_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_icon.TabIndex = 14;
-            this.pic_icon.TabStop = false;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(720, 263);
-            this.Controls.Add(this.pic_icon);
+            this.ClientSize = new System.Drawing.Size(750, 329);
             this.Controls.Add(this.card_hotkeys);
             this.Controls.Add(this.card_throw_time);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(50, 50);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(720, 263);
-            this.MinimumSize = new System.Drawing.Size(720, 263);
+            this.MaximumSize = new System.Drawing.Size(750, 329);
+            this.MinimumSize = new System.Drawing.Size(750, 329);
             this.Name = "MainForm";
+            this.Padding = new System.Windows.Forms.Padding(3, 80, 3, 4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stardew Fisher by h0pele$0ul";
             this.Resize += new System.EventHandler(this.MainForm_Resize);
@@ -202,7 +191,6 @@ namespace StardewFisher
             this.card_throw_time.PerformLayout();
             this.card_hotkeys.ResumeLayout(false);
             this.card_hotkeys.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_icon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,6 +206,5 @@ namespace StardewFisher
         private MaterialSkin.Controls.MaterialLabel lbl_custom_hotkey;
         private MaterialSkin.Controls.MaterialCard card_throw_time;
         private MaterialSkin.Controls.MaterialCard card_hotkeys;
-        private PictureBox pic_icon;
     }
 }

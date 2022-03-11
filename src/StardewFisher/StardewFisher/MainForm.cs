@@ -4,6 +4,7 @@ using StardewFisher.DTO;
 using StardewFisher.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -20,7 +21,7 @@ namespace StardewFisher
 
         private int _sleepTime = 1000;
 
-        KeyboardHook hook = new KeyboardHook();
+        private readonly KeyboardHook _hook = new KeyboardHook();
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
@@ -34,12 +35,10 @@ namespace StardewFisher
 
             ConfigureMaterialForm();
 
-            pic_icon.BackColor = Color.Transparent;
-
-            hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
+            _hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
 
             // register default hotkey
-            hook.RegisterHotKey(StardewFisher.Helpers.ModifierKeys.Control | StardewFisher.Helpers.ModifierKeys.Alt, Keys.F);
+            _hook.RegisterHotKey(StardewFisher.Helpers.ModifierKeys.Control | StardewFisher.Helpers.ModifierKeys.Alt, Keys.F);
 
             try
             {
@@ -74,7 +73,6 @@ namespace StardewFisher
             {
                 this.RegisterHotkey(hotkey);
             }
-
         }
 
         
@@ -87,6 +85,7 @@ namespace StardewFisher
             // run fire and forget task to hold LMB for _sleepTime then release
             Task.Run(() =>
             {
+
                 mouse_event(MOUSEEVENTF_LEFTDOWN, X, Y, 0, 0);
 
                 Thread.Sleep(_sleepTime);
@@ -114,7 +113,7 @@ namespace StardewFisher
         // bring back app from tray
         private void notify_icon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Show();
+            this.Show();
             this.WindowState = FormWindowState.Normal;
             notify_icon.Visible = false;
         }
@@ -146,7 +145,12 @@ namespace StardewFisher
                     return;
                 }
                 _saveData.ModifierKeys = new List<ModifierKeys>();
-                MessageBox.Show("Only 3 modifier keys allowed (shift, ctrl, alt)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Only 3 modifier keys allowed (shift, ctrl, alt)",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
                 txt_hotkey.Text = "";
                 return;
             }
@@ -163,7 +167,12 @@ namespace StardewFisher
                     return;
                 }
                 _saveData.ModifierKeys = new List<ModifierKeys>();
-                MessageBox.Show("Only 3 modifier keys allowed (shift, ctrl, alt)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Only 3 modifier keys allowed (shift, ctrl, alt)",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
                 txt_hotkey.Text = "";
                 return;
             }
@@ -180,7 +189,12 @@ namespace StardewFisher
                     return;
                 }
                 _saveData.ModifierKeys = new List<ModifierKeys>();
-                MessageBox.Show("Only 3 modifier keys allowed (shift, ctrl, alt)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Only 3 modifier keys allowed (shift, ctrl, alt)",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
                 txt_hotkey.Text = "";
                 return;
             }
@@ -201,7 +215,12 @@ namespace StardewFisher
                     txt_hotkey.Text = "";
                     _saveData.ModifierKeys = new List<ModifierKeys>();
                     _saveData.Key = default;
-                    MessageBox.Show("Same hotkey already saved bro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        "Same hotkey already saved",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                        );
                     return;
                 }
                 catch (InvalidOperationException)
@@ -209,19 +228,34 @@ namespace StardewFisher
                     txt_hotkey.Text = "";
                     _saveData.ModifierKeys = new List<ModifierKeys>();
                     _saveData.Key = default;
-                    MessageBox.Show("Same hotkey already saved bro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        "Same hotkey already saved",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                        );
                     return;
                 }
 
                 txt_hotkey.Text = "";
                 _saveData.ModifierKeys = new List<ModifierKeys>();
                 _saveData.Key = default;
-                MessageBox.Show("Your hotkey is saved");
+                MessageBox.Show(
+                    "Your hotkey is saved",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
 
                 return;
             }
 
-            MessageBox.Show("You must use at least one modifier key (ctrl, shift or alt)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(
+                "You must use at least one modifier key (ctrl, shift or alt)",
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+                );
             txt_hotkey.Text = "";
             _saveData.ModifierKeys = new List<ModifierKeys>();
             _saveData.Key = default;
@@ -243,17 +277,17 @@ namespace StardewFisher
                     }
                 case 1:
                     {
-                        hook.RegisterHotKey(hotkeyToRegister.ModifierKeys[0], hotkeyToRegister.Key);
+                        _hook.RegisterHotKey(hotkeyToRegister.ModifierKeys[0], hotkeyToRegister.Key);
                         break;
                     }
                 case 2:
                     {
-                        hook.RegisterHotKey(hotkeyToRegister.ModifierKeys[0] | hotkeyToRegister.ModifierKeys[1], hotkeyToRegister.Key);
+                        _hook.RegisterHotKey(hotkeyToRegister.ModifierKeys[0] | hotkeyToRegister.ModifierKeys[1], hotkeyToRegister.Key);
                         break;
                     }
                 case 3:
                     {
-                        hook.RegisterHotKey(hotkeyToRegister.ModifierKeys[0] | hotkeyToRegister.ModifierKeys[1] | hotkeyToRegister.ModifierKeys[2], hotkeyToRegister.Key);
+                        _hook.RegisterHotKey(hotkeyToRegister.ModifierKeys[0] | hotkeyToRegister.ModifierKeys[1] | hotkeyToRegister.ModifierKeys[2], hotkeyToRegister.Key);
                         break;
                     }
             }
